@@ -21,11 +21,6 @@ mongoose
 // const server = require("../config/index");
 
 const droneModel = require("../models/Drone.model")
-
-console.log("hi");
-
-
-
 const dronesInfo = [
         { name: "Creeper XL 500", propellers: 3, maxSpeed: 12 },
         { name: "Racer 57", propellers: 4, maxSpeed: 20 },

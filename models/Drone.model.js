@@ -1,7 +1,7 @@
 // Iteration #1
 
 const mongoose = require("mongoose"); // require mongoose 
-const {Schema } = mongoose; // deconstructure both schema and module
+const {Schema} = mongoose; // deconstructure both schema and module
 
 
 // set new Schema
