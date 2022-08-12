@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
+
 // require the Drone model here
 const Drone = require("../models/Drone.model.js")
 
@@ -39,6 +40,7 @@ router.get('/drones/:id/edit', (req, res, next) => {
   // Iteration #4: Update the drone
   // ... your code here
   const {id} = req.params;
+
   
   Drone.findById(id)
     .then(result =>{
@@ -53,9 +55,13 @@ router.post('/drones/:id/edit', (req, res, next) => {
   const {id} = req.params;
   const  newDrone = req.body;
 
-  Drone.updateOne({id}, {name: newDrone.name, propellers: newDrone.propellers, maxSpeed: newDrone.maxSpeed })
+
+  // I worked so hard for this code, I cannot even believe I managed to find the solution. This is 2 am, I started working on it just after course.
+  Drone.updateOne({_id:id}, {$set: {name: newDrone.name, propellers: newDrone.propellers, maxSpeed: newDrone.maxSpeed }})
     .then(result =>{
-      Drone.save()
+      res.render("drones/update-form", {result})
+    })
+    .then( result =>{
       res.redirect("/drones");
     })
     .catch(error =>  "this is an error")
